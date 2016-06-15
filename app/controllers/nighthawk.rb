@@ -15,7 +15,6 @@ end
 
 
 post '/nighthawks' do
-  # binding.pry
 
   nighthawk = Nighthawk.new(params)
   if nighthawk.save
@@ -30,7 +29,30 @@ end
 
 
 get '/nighthawks/:id' do
-
   @nighthawk = Nighthawk.find(params[:id])
   erb :'nighthawks/show'
+end
+
+
+get '/nighthawks/:id/edit' do
+  @nighthawk = Nighthawk.find(params[:id])
+  erb :'nighthawks/edit'
+end
+
+
+put "/nighthawks/:id" do
+  binding.pry
+  @nighthawk = Nighthawk.find(params[:id])
+  if @nighthawk.update_attributes(params[:nighthawk])
+    redirect '/'
+  else
+    @errors = @nighthawk.errors.full_messages
+    erb :'nighthawks/edit'
+  end
+end
+
+delete '/nighthawks/:id' do
+  nighthawk = Nighthawk.find(params[:id])
+  nighthawk.destroy
+  redirect '/'
 end

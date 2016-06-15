@@ -1,0 +1,25 @@
+<div class="">
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <%  end %>
+
+  <form class="" action="/nighthawks/<%= @nighthawk.id %>" method="post">
+    <input type="hidden" name="_method" value="put">
+    <div class="">
+      Name:
+      <input type="text" name="nighthawk[name]" value="<%= @nighthawk.name %>">
+    </div>
+
+    <div class="">
+      Home:
+      <input type="text" name="nighthawk[home]" value="<%= @nighthawk.home%>">
+    </div>
+
+    <input type="submit" value="Create">
+  </form>
+
+</div>
