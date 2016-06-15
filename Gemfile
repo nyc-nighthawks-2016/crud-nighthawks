@@ -12,6 +12,8 @@ gem 'activerecord', '~>4.2.0'
 
 gem 'rake'
 
+gem 'pry'
+
 gem 'shotgun'
 
 group :test do

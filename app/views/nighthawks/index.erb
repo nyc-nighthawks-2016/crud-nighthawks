@@ -1,0 +1,11 @@
+<div class="">
+  <h1>Welcome home</h1>
+
+  <ul>
+    <% @nighthawks.each do |nighthawk| %>
+      <li><%= nighthawk.name %> <a href="/nighthawks/<%= nighthawk.id %>">Show</a></li>
+    <% end  %>
+  </ul>
+
+  <a href="/nighthawks/new">Create a new Nighthawk</a>
+</div>
