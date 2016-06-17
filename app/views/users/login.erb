@@ -1,0 +1,25 @@
+<div class="">
+
+  <% if @errors %>
+    <ul>
+      <% @errors.each do |error| %>
+        <li><%= error %></li>
+      <% end %>
+    </ul>
+  <%  end %>
+
+  <h4>Log in</h4>
+  <form class="" action="/sessions" method="post">
+    <div class="">
+      Email:
+      <input type="email" name="user[email]">
+    </div>
+
+    <div class="">
+      Password:
+      <input type="password" name="user[password]" value="">
+    </div>
+
+    <input type="submit" value="Create">
+  </form>
+</div>

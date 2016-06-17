@@ -3,7 +3,9 @@ class Nighthawk < ActiveRecord::Base
 
   validates :name, :home, presence: true
 
-  validate :custom_age_validation
+  # validate :custom_age_validation
+
+  belongs_to :user
 
 
   def custom_age_validation

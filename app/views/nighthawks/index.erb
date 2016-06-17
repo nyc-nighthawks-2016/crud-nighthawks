@@ -2,14 +2,19 @@
   <h1>Welcome home</h1>
 
   <ul>
-    <% @nighthawks.each do |nighthawk| %>
-      <li><%= nighthawk.name %> <a href="/nighthawks/<%= nighthawk.id %>">Show</a> <a href="/nighthawks/<%= nighthawk.id%>/edit">Edit</a>
-        <form class="" action="/nighthawks/<%= nighthawk.id%>" method="post">
-          <input type="hidden" name="_method" value="delete">
-          <input type="submit" value="Delete">
-        </form>
-      </li>
-    <% end  %>
+    <% if login? %>
+      <% @nighthawks.each do |nighthawk| %>
+        <li><%= nighthawk.name %> <a href="/nighthawks/<%= nighthawk.id %>">Show</a>
+          <% if current_user.id == nighthawk.user_id %>
+            <a href="/nighthawks/<%= nighthawk.id%>/edit">Edit</a>
+            <form class="" action="/nighthawks/<%= nighthawk.id%>" method="post">
+              <input type="hidden" name="_method" value="delete">
+              <input type="submit" value="Delete">
+            </form>
+          <% end %>
+        </li>
+      <% end  %>
+    <% end %>
   </ul>
 
   <a href="/nighthawks/new">Create a new Nighthawk</a>
